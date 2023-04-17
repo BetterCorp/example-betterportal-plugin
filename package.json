@@ -1,5 +1,5 @@
 {
-  "name": "navic",
+  "name": "example-betterportal-plugin",
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
