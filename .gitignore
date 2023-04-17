@@ -1,0 +1,6 @@
+/lib
+/node_modules
+/sec.config.json
+/junit.xml
+/test-file-*
+/dist-clients
