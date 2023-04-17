@@ -4,3 +4,7 @@
 /junit.xml
 /test-file-*
 /dist-clients
+/bpui
+/betterportal-ui/dist
+/betterportal-ui/lib
+/betterportal-ui/node_modules

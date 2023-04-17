@@ -11,13 +11,20 @@
     "start": "ts-node node_modules/@bettercorp/service-base/lib/cli.js",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' node ./node_modules/nyc/bin/nyc.js --reporter json --reporter lcov ./node_modules/mocha/bin/mocha.js -r ts-node/register 'src/tests/**/*.ts' --reporter json --reporter-options output=junit.json",
-    "testDev": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha.js -r ts-node/register 'src/tests/**/*.ts'"
+    "testDev": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha.js -r ts-node/register 'src/tests/**/*.ts'",
+    "build-ui": "cd betterportal-ui && npm run build",
+    "npmi-ui": "cd ./betterportal-ui && npm i",
+    "npmci-ui": "cd ./betterportal-ui && npm ci",
+    "build-all": "npm run build && npm run build-ui",
+    "npmi-all": "npm i && npm run npmi-ui",
+    "npmci-all": "npm ci && npm run npmci-ui"
   },
   "keywords": [],
   "author": "Mitchell R <mitchell.robert@bettercorp.co.za>",
   "license": "AGPL-3.0-only",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "bpui/**/*"
   ],
   "bsb_project": true,
   "devDependencies": {
@@ -35,6 +42,8 @@
   },
   "dependencies": {
     "@bettercorp/service-base": "^8.3.30",
+    "@bettercorp/service-base-plugin-betterportal": "^1.10.1",
+    "@bettercorp/service-base-plugin-web-server": "^6.5.4",
     "@bettercorp/tools": "^2.1.30"
   }
 }
