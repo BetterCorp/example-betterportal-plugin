@@ -4,7 +4,7 @@ import {
   IPluginLogger,
 } from "@bettercorp/service-base";
 import { fastify } from "@bettercorp/service-base-plugin-web-server";
-import {betterPortal} from '@bettercorp/service-base-plugin-betterportal'
+import { betterPortal } from "@bettercorp/service-base-plugin-betterportal";
 
 export class Service extends ServicesBase<
   ServiceCallable,
@@ -29,11 +29,21 @@ export class Service extends ServicesBase<
 
   public override async init() {
     await this.betterportal.initBPUI();
-    await this.log.info("Hello world {abc}", {
-      abc: "def",
-    });
     await this.fastify.get("/abc/:id/", async (reply, params) => {
+      await this.log.info("Request ID: {abc}", {
+        abc: params.id,
+      });
       return reply.send({ id: params.id });
     });
+    await this.betterportal.read(
+      "/abcp/:id/",
+      null,
+      async (reply, token, clientId, fields, params) => {
+        await this.log.info("Request ID2: {abc}", {
+          abc: params.id,
+        });
+        return reply.send({ id: params.id });
+      }
+    );
   }
 }
